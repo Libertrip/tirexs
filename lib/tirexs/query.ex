@@ -103,6 +103,15 @@ defmodule Tirexs.Query do
   end
 
   @doc false
+  def function_score(options, function_score_opts\\[]) do
+    if is_list(options) do
+      function_score_opts = Enum.fetch!(options, 0)
+      options = extract_do(options, 1)
+    end
+    [function_score: extract(options) ++ function_score_opts]
+  end
+
+  @doc false
   def term(options) do
     [field, values, options] = extract_options(options)
     [term: Dict.put(options, to_atom(field), values)]

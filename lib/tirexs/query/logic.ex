@@ -34,6 +34,8 @@ defmodule Tirexs.Query.Logic do
         {:dis_max, _, [params]}               -> Query.dis_max(params[:do])
         {:dis_max, _, options}                -> Query.dis_max(options)
         {:queries, _, [params]}               -> Query.queries(params[:do])
+        {:function_score, _, [params]}        -> Query.function_score(params[:do])
+        {:function_score, _, options}         -> Query.function_score(options)
         {:field, _, params}                   -> Query.field(params)
         {:flt, _, params}                     -> Query.flt(params)
         {:flt_field, _, params}               -> Query.flt_field(params)
